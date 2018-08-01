@@ -1,0 +1,23 @@
+apiVersion: extensions/v1beta1
+kind: DaemonSet
+metadata:
+  labels:
+    app: fluentbit
+  name: fluentbit
+spec:
+  template:
+    metadata:
+      labels:
+        app: fluentbit
+    spec:
+      containers:
+        - name: fluentbit
+          image: allamagoosa/fluentbit:latest
+          volumeMounts:
+          - name: var-log-containers
+            mountPath: /var/log/
+            readOnly: true
+      volumes:
+      - name: var-log-containers
+        hostPath:
+          path: /var/log/
