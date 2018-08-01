@@ -12,12 +12,12 @@ spec:
     spec:
       containers:
         - name: fluentbit
-          image: allamagoosa/fluentbit:latest
+          image: allamagoosa/fluentbit:test
           volumeMounts:
-          - name: var-log-containers
-            mountPath: /var/log/
+          - name: var-lib-containers
+            mountPath: /var/lib/docker/containers/
             readOnly: true
       volumes:
-      - name: var-log-containers
+      - name: var-lib-containers
         hostPath:
-          path: /var/log/
+          path: /var/lib/docker/containers/
